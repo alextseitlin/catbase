@@ -1,15 +1,19 @@
 // import { useState } from "react";
 import catModel from "@/models/cat";
 // fluffy2.save();
-
+interface DocumentItem {
+  name: string;
+  description: string;
+  isActive: boolean;
+}
 // const smallCats = await Kittens.find({ size: 'small' }).exec();
-const doc = [];
+const doc: DocumentItem[] = [];
 // const doc = await catModel.find();
 
 //==============================================//
 
 type Props = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 function Orders({ children }: Props) {
