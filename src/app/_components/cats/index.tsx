@@ -19,8 +19,10 @@ function Orders({ children }: Props) {
       <div className="border p-10 my-10">
         Your Cats
         <div className="flex flex-wrap gap-x-4 gap-y-1">
-          {doc.map((item) => (
-            <div className="m-1">{item.name}</div>
+          {doc.map((item, index) => (
+            <div className="m-1" key={index}>
+              {item.name}
+            </div>
           ))}
         </div>
       </div>
