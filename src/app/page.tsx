@@ -19,7 +19,7 @@ export default function Home() {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch("http://localhost:3000/api/Cats");
+      const res = await fetch("https://whereiscat.netlify.app/api/Cats");
       const data = await res.json();
       setCatsList(data.cats);
     }
