@@ -20,7 +20,7 @@ function Orders({ children }: Props) {
   //   const [form, setForm] = useState();
   return (
     <>
-      <div className="border p-10 my-10">
+      <div className="">
         Your Cats
         <div className="flex flex-wrap gap-x-4 gap-y-1">
           {doc.map((item, index) => (
