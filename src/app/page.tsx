@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Container from "@/layout/container";
 import Terminal from "@/components/layout/terminal";
-import Cats from "./_components/cats";
-import Cat from "./_components/cat";
+import Cats from "./_components/Cats";
+import Cat from "./_components/Cat";
 import Button from "@/ui/bottom";
 import { useState, useEffect } from "react";
 

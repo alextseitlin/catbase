@@ -16,6 +16,7 @@ const catsSchema = new mongoose.Schema(
     createdAt: { type: Date, default: Date.now },
     name: String,
     description: String,
+    location: String,
     isActive: Boolean,
   },
   {
