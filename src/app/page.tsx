@@ -19,7 +19,13 @@ export default function Home() {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch("https://whereiscat.netlify.app/api/Cats");
+      const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
+      const baseUrl =
+        environment === "local"
+          ? process.env.NEXT_PUBLIC_BASE_URL_LOCAL
+          : process.env.NEXT_PUBLIC_BASE_URL_PRODUCTION;
+
+      const res = await fetch(`${baseUrl}/api/Cats`);
       const data = await res.json();
       setCatsList(data.cats);
     }
@@ -30,7 +36,7 @@ export default function Home() {
   return (
     <>
       <Container className="my-10">
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 gap-5">
           <Terminal>
             <Button>Add Cat</Button>
           </Terminal>
