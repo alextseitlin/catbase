@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 
 import { useState } from "react";
-import Button from "@/ui/Bottom";
+import Button from "/src/app/_components/ui/Button";
 
 type Props = {
   setCatsList: Function;

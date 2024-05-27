@@ -9,7 +9,7 @@ type Props = {
   type?: string;
 };
 const baseClassName = "bg-emerald-400 py-2 px-3 inline-block cursor-pointer";
-function Bottom({ children, href, onClick, type }: Props) {
+function Button({ children, href, onClick, type }: Props) {
   if (href) {
     return (
       <Link href={href} className={`${baseClassName}`} onClick={onClick}>
@@ -33,4 +33,4 @@ function Bottom({ children, href, onClick, type }: Props) {
     </div>
   );
 }
-export default Bottom;
+export default Button;
