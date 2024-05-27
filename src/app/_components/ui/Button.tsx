@@ -1,6 +1,6 @@
 import React, { ReactNode, MouseEventHandler } from "react";
 
-import Link from "./Link";
+import Link from "@/ui/Link";
 
 type Props = {
   children?: React.ReactNode;

@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import catModel from "@/models/cat";
+import catModel from "@/app/_models/Cat";
 // fluffy2.save();
 interface DocumentItem {
   name: string;
