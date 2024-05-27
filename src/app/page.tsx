@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Container from "@/layout/container";
 import Terminal from "@/components/layout/terminal";
-import Cats from "./_components/Cats";
-import Cat from "./_components/Cat";
-import Button from "@/ui/bottom";
+import Cats from "@/components/Cats";
+import Cat from "@/components/Cat";
+import CatAdd from "@/components/CatAdd";
 import { useState, useEffect } from "react";
 
 interface CatType {
@@ -38,7 +37,7 @@ export default function Home() {
       <Container className="my-10">
         <div className="grid md:grid-cols-2 gap-5">
           <Terminal>
-            <Button>Add Cat</Button>
+            <CatAdd />
           </Terminal>
           <Terminal label="Sofa">
             [
