@@ -19,7 +19,6 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
       "@/models/*": ["./src/app/_models/*"],
       "@/components/*": ["./src/app/_components/*"],
       "@/ui/*": ["./src/app/_components/ui/*"],

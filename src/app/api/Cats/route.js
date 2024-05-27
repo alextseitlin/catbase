@@ -1,4 +1,4 @@
-import catModel from "@/models/Cat";
+import catModel from "/src/app/_models/cat";
 import { NextResponse } from "next/server";
 
 export async function GET() {

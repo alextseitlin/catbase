@@ -25,6 +25,7 @@ const catsSchema = new mongoose.Schema(
 );
 
 // Convert Schema to Model
-const Cats = mongoose.models.Cats || mongoose.model("Cats", catsSchema);
+const CatsModel =
+  mongoose.models.CatsModel || mongoose.model("CatsModel", catsSchema);
 
-export default Cats;
+export default CatsModel;
