@@ -37,14 +37,16 @@ export default function Home() {
       <Container className="my-10">
         <div className="grid md:grid-cols-2 gap-5">
           <Terminal>
-            <CatAdd />
+            <CatAdd setCatsList={setCatsList} />
           </Terminal>
           <Terminal label="Sofa">
-            [
-            {catsList.map((cat, index) => (
-              <Cat name={cat.name} key={index} />
-            ))}
-            ]
+            <span className="flex flex-wrap ">
+              [
+              {catsList.map((cat, index) => (
+                <Cat name={cat.name} key={index} />
+              ))}
+              ]
+            </span>
           </Terminal>
           <Terminal label="Sleeping">
             [

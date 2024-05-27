@@ -1,8 +1,10 @@
+import React, { ReactNode, MouseEventHandler } from "react";
+
 import Link from "./Link";
 
 type Props = {
   children?: React.ReactNode;
-  onClick?: Function;
+  onClick?: MouseEventHandler<HTMLDivElement>;
   href?: string;
   type?: string;
 };
@@ -17,13 +19,16 @@ function Bottom({ children, href, onClick, type }: Props) {
   }
 
   if (type === "submit") {
-    return (
-      <input className={`${baseClassName}`} value={children} type="submit" />
-    );
+    const value =
+      typeof children === "string" || typeof children === "number"
+        ? children
+        : String(children);
+
+    return <input className={`${baseClassName}`} value={value} type="submit" />;
   }
 
   return (
-    <div className={`${baseClassName}`} onClick={onClick} type={type}>
+    <div className={`${baseClassName}`} onClick={onClick}>
       {children}
     </div>
   );

@@ -1,16 +1,60 @@
+import React, { ReactNode, MouseEventHandler } from "react";
 import NextLink from "next/link";
 
-type Props = {
-  children?: React.ReactNode;
-  onClick?: Function;
-  className?: string;
+interface LinkProps {
+  children: ReactNode;
   href: string;
-};
-function Link({ children, href, className, onClick }: Props) {
+  className?: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
+}
+
+const Link: React.FC<LinkProps> = ({ children, href, className, onClick }) => {
   return (
-    <NextLink href={href} className={`${className}`} onClick={onClick}>
-      {children}
+    <NextLink href={href} passHref>
+      <a className={className} onClick={onClick}>
+        {children}
+      </a>
     </NextLink>
   );
+};
+
+interface DivOrLinkProps {
+  children: ReactNode;
+  href?: string;
+  className?: string;
+  onClick?:
+    | MouseEventHandler<HTMLDivElement>
+    | MouseEventHandler<HTMLAnchorElement>;
 }
-export default Link;
+
+const DivOrLink: React.FC<DivOrLinkProps> = ({
+  children,
+  href,
+  className,
+  onClick,
+}) => {
+  const baseClassName = "some-class";
+
+  if (href) {
+    return (
+      <Link
+        href={href}
+        className={baseClassName}
+        onClick={onClick as MouseEventHandler<HTMLAnchorElement>}
+      >
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <div
+      className={baseClassName}
+      onClick={onClick as MouseEventHandler<HTMLDivElement>}
+    >
+      {children}
+    </div>
+  );
+};
+
+export default DivOrLink;
