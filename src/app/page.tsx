@@ -2,7 +2,6 @@
 
 import Container from "@/layout/container";
 import Terminal from "@/components/layout/terminal";
-import Cats from "@/components/Cats";
 import Cat from "@/components/Cat";
 import CatAdd from "@/components/CatAdd";
 import { useState, useEffect } from "react";
