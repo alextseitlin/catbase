@@ -38,7 +38,7 @@ export default function Home() {
             <CatAdd setCatsList={setCatsList} />
           </Terminal>
           <Terminal label="Sofa">
-            <span className="flex flex-wrap ">
+            <span className="flex flex-wrap gap-3">
               [
               {catsList.map((cat, index) => (
                 <Cat name={cat.name} key={index} />
@@ -46,7 +46,7 @@ export default function Home() {
               ]
             </span>
           </Terminal>
-          <Terminal label="Sleeping">
+          {/* <Terminal label="Sleeping">
             [
             {catsList.map((cat, index) => (
               <Cat name={cat.name} key={index} />
@@ -66,7 +66,7 @@ export default function Home() {
               <Cat name={cat.name} key={index} />
             ))}
             ]
-          </Terminal>
+          </Terminal> */}
         </div>
         {/* <Terminal>[Cat list]</Terminal> */}
         {/* JSON.stringify: {JSON.stringify(catsList, null, 2)} */}

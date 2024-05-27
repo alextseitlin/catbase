@@ -6,7 +6,7 @@ function Orders({ name }: Props) {
   //   const [form, setForm] = useState();
   return (
     <>
-      <span className="mx-3">{name}</span>
+      <span className="">{name}</span>
     </>
   );
 }
