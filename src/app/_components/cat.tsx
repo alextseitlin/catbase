@@ -1,13 +1,16 @@
 type Props = {
   name: string;
+  id?: string;
 };
 
-function Orders({ name }: Props) {
+function Cat({ name, id }: Props) {
   //   const [form, setForm] = useState();
   return (
     <>
-      <span className="">{name}</span>
+      <span className="" draggable="true" ondragstart="">
+        {name}
+      </span>
     </>
   );
 }
-export default Orders;
+export default Cat;
