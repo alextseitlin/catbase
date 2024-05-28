@@ -20,9 +20,9 @@
     ],
     "paths": {
       "@/models/*": ["/src/app/_models/*"],
-      "@/components/*": ["./src/app/_components/*"],
-      "@/ui/*": ["./src/app/_components/ui/*"],
-      "@/layout/*": ["./src/app/_components/layout/*"]
+      "@/components/*": ["/src/app/_components/*"],
+      "@/ui/*": ["/src/app/_components/ui/*"],
+      "@/layout/*": ["/src/app/_components/layout/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
