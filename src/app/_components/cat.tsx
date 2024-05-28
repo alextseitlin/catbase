@@ -8,7 +8,7 @@ function Cat({ name, id }: Props) {
   return (
     <>
       <span className="" draggable="true" ondragstart="">
-        {name}
+        <span className="text-slate-500">||</span> {name}
       </span>
     </>
   );

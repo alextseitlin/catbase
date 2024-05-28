@@ -1,8 +1,8 @@
 "use client";
 import Container from "@/layout/container";
 import Terminal from "@/layout/terminal";
-import Cat from "@/components/Cat";
-import CatAdd from "@/components/CatAdd";
+import Cat from "@/components/cat";
+import CatAdd from "@/components/catAdd";
 import { useState, useEffect } from "react";
 import baseUrl from "@/utils/baseUrl";
 
