@@ -1,6 +1,6 @@
 import React, { DragEventHandler } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-
+import { useState } from "react";
 import Terminal from "@/layout/terminal";
 import Cat from "@/components/cat";
 
@@ -21,13 +21,44 @@ function Cats({
   onDragStart,
   catsList,
 }: Props) {
-  //   const [form, setForm] = useState();
+  function onDragEnd(result) {
+    const { source, destination } = result;
+
+    // dropped outside the list
+    if (!destination) {
+      return;
+    }
+
+    const items = reorder(
+      this.state.items,
+      result.source.index,
+      result.destination.index
+    );
+
+    // const sInd = +source.droppableId;
+    // const dInd = +destination.droppableId;
+  }
+
+  const reorder = (list, startIndex, endIndex) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
+  };
+
+  const [list, setList] = useState([
+    { label: "First" },
+    { label: "Second" },
+    { label: "Third" },
+    { label: "Fourth" },
+    { label: "Fifth" },
+    { label: "Sixth" },
+  ]);
+
   return (
     <>
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable key={ind} droppableId={`${ind}`}></Droppable>
-      </DragDropContext>
-      {/* {catData.map((location, index) => (
+      {catData.map((location, index) => (
         <Terminal
           id={`terminal-${location.name}-${index}`}
           key={index}
@@ -51,7 +82,7 @@ function Cats({
             ]
           </span>
         </Terminal>
-      ))} */}
+      ))}
     </>
   );
 }
