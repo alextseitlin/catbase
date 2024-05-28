@@ -13,6 +13,7 @@ function CatAdd({ setCatsList }: Props) {
 
   const [form, setForm] = useState({
     name: "",
+    location: "sofa",
   });
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {

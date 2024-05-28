@@ -4,12 +4,16 @@ import Terminal from "@/layout/terminal";
 import Cat from "@/components/cat";
 import CatAdd from "@/components/CatAdd";
 import { useState, useEffect } from "react";
+import baseUrl from "@/utils/baseUrl";
 
 interface CatType {
   id: number;
   name: string;
+  location: string;
   // Add other fields if necessary
 }
+
+const catLocation = ["sofa", "sleeping", "pooping", "eating"];
 
 export default function Home() {
   const [catsList, setCatsList] = useState<CatType[]>([]);
@@ -17,10 +21,10 @@ export default function Home() {
   useEffect(() => {
     async function getData() {
       const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
-      const baseUrl =
-        environment === "local"
-          ? process.env.NEXT_PUBLIC_BASE_URL_LOCAL
-          : process.env.NEXT_PUBLIC_BASE_URL_PRODUCTION;
+      // const baseUrl =
+      //   environment === "local"
+      //     ? process.env.NEXT_PUBLIC_BASE_URL_LOCAL
+      //     : process.env.NEXT_PUBLIC_BASE_URL_PRODUCTION;
 
       const res = await fetch(`${baseUrl}/api/Cats`);
       const data = await res.json();
@@ -37,39 +41,22 @@ export default function Home() {
           <Terminal>
             <CatAdd setCatsList={setCatsList} />
           </Terminal>
-          <Terminal label="Sofa">
-            <span className="flex flex-wrap gap-3">
-              [
-              {catsList.map((cat, index) => (
-                <Cat name={cat.name} key={index} />
-              ))}
-              ]
-            </span>
-          </Terminal>
-          {/* <Terminal label="Sleeping">
-            [
-            {catsList.map((cat, index) => (
-              <Cat name={cat.name} key={index} />
-            ))}
-            ]
-          </Terminal>
-          <Terminal label="Pooping">
-            [
-            {catsList.map((cat, index) => (
-              <Cat name={cat.name} key={index} />
-            ))}
-            ]
-          </Terminal>
-          <Terminal label="Eating">
-            [
-            {catsList.map((cat, index) => (
-              <Cat name={cat.name} key={index} />
-            ))}
-            ]
-          </Terminal> */}
+          {catLocation.map((location, index) => (
+            <Terminal key={index} label={location}>
+              <span className="flex flex-wrap gap-3">
+                [
+                {catsList
+                  .filter((cat) => cat.location === location)
+                  .map((cat, index) => (
+                    <Cat name={cat.name} key={index} />
+                  ))}
+                ]
+              </span>
+            </Terminal>
+          ))}
+
+          <Terminal>baseUrl {baseUrl}</Terminal>
         </div>
-        {/* <Terminal>[Cat list]</Terminal> */}
-        {/* JSON.stringify: {JSON.stringify(catsList, null, 2)} */}
       </Container>
     </>
   );
