@@ -13,7 +13,7 @@ type Props = {
 
 function Cats({
   children,
-  catData,
+  catData = [],
   onDrop,
   onDragOver,
   onDragStart,
