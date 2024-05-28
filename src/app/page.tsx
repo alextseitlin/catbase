@@ -1,7 +1,7 @@
 "use client";
 import Container from "@/layout/container";
 import Terminal from "@/layout/terminal";
-import Cat from "@/components/cat";
+import Cat from "@/components/Cat";
 import CatAdd from "@/components/CatAdd";
 import { useState, useEffect } from "react";
 import baseUrl from "@/utils/baseUrl";
@@ -20,12 +20,6 @@ export default function Home() {
 
   useEffect(() => {
     async function getData() {
-      const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
-      // const baseUrl =
-      //   environment === "local"
-      //     ? process.env.NEXT_PUBLIC_BASE_URL_LOCAL
-      //     : process.env.NEXT_PUBLIC_BASE_URL_PRODUCTION;
-
       const res = await fetch(`${baseUrl}/api/Cats`);
       const data = await res.json();
       setCatsList(data.cats);
@@ -41,6 +35,7 @@ export default function Home() {
           <Terminal>
             <CatAdd setCatsList={setCatsList} />
           </Terminal>
+
           {catLocation.map((location, index) => (
             <Terminal key={index} label={location}>
               <span className="flex flex-wrap gap-3">
@@ -54,8 +49,6 @@ export default function Home() {
               </span>
             </Terminal>
           ))}
-
-          <Terminal>baseUrl {baseUrl}</Terminal>
         </div>
       </Container>
     </>

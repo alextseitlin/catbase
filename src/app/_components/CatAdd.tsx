@@ -30,6 +30,7 @@ function CatAdd({ setCatsList }: Props) {
 
     setCatsList((preState: { name: string }[]) => [...preState, form]);
   }
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
     const name = e.target.name;
