@@ -1,4 +1,6 @@
 import React, { DragEventHandler } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
 import Terminal from "@/layout/terminal";
 import Cat from "@/components/cat";
 
