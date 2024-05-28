@@ -1,36 +1,53 @@
-// import { useState } from "react";
-// fluffy2.save();
-interface DocumentItem {
-  name: string;
-  description: string;
-  isActive: boolean;
-}
-// const smallCats = await Kittens.find({ size: 'small' }).exec();
-const doc: DocumentItem[] = [];
-// const doc = await catModel.find();
-
-//==============================================//
+import React, { DragEventHandler } from "react";
+import Terminal from "@/layout/terminal";
+import Cat from "@/components/cat";
 
 type Props = {
   children?: React.ReactNode;
+  catData?: object;
+  catsList?: object;
+  onDrop?: DragEventHandler<HTMLDivElement>;
+  onDragOver?: DragEventHandler<HTMLDivElement>;
+  onDragStart?: DragEventHandler<HTMLDivElement>;
 };
 
-function Orders({ children }: Props) {
+function Cats({
+  children,
+  catData,
+  onDrop,
+  onDragOver,
+  onDragStart,
+  catsList,
+}: Props) {
   //   const [form, setForm] = useState();
   return (
     <>
-      <div className="">
-        Your Cats
-        <div className="flex flex-wrap gap-x-4 gap-y-1">
-          {doc.map((item, index) => (
-            <div className="m-1" key={index}>
-              {item.name}
-            </div>
-          ))}
-        </div>
-      </div>
-      <div>{JSON.stringify(doc, null, 2)}</div>
+      {catData.map((location, index) => (
+        <Terminal
+          id={`terminal-${location.name}-${index}`}
+          key={index}
+          label={location.name}
+          note={location.note}
+          onDrop={(e) => onDrop(e, location.name)}
+          onDragOver={(e) => onDragOver(e)}
+        >
+          <span className="flex flex-wrap gap-3">
+            [
+            {catsList
+              .filter((cat) => cat.location === location.name)
+              .map((cat, index) => (
+                <Cat
+                  name={cat.name}
+                  key={index}
+                  id={`${cat.name}-${index}`}
+                  onDragStart={onDragStart}
+                />
+              ))}
+            ]
+          </span>
+        </Terminal>
+      ))}
     </>
   );
 }
-export default Orders;
+export default Cats;
