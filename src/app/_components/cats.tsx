@@ -4,7 +4,7 @@ import Cat from "@/components/cat";
 
 type Props = {
   children?: React.ReactNode;
-  catData?: Array;
+  catData?: Array<[]>;
   catsList?: Object;
   onDrop?: DragEventHandler<HTMLDivElement>;
   onDragOver?: DragEventHandler<HTMLDivElement>;
