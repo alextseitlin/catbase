@@ -21,7 +21,7 @@
     "paths": {
       "@/models/*": ["/src/app/_models/*"],
       "@/components/*": ["/src/app/_components/*"],
-      "@/ui/*": ["/src/app/_components/ui/*"],
+      "@/ui/*": ["./src/app/_components/ui/*"],
       "@/layout/*": ["/src/app/_components/layout/*"]
     }
   },
