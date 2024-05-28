@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import baseUrl from "@/utils/baseUrl";
 
 import { useState } from "react";
 import Button from "@/ui/Button";
@@ -18,11 +19,6 @@ function CatAdd({ setCatsList }: Props) {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
-    const baseUrl =
-      environment === "local"
-        ? process.env.NEXT_PUBLIC_BASE_URL_LOCAL
-        : process.env.NEXT_PUBLIC_BASE_URL_PRODUCTION;
 
     const res = await fetch(`${baseUrl}/api/Cats`, {
       method: "POST",
