@@ -1,23 +1,35 @@
+import React, { DragEventHandler } from "react";
+
 type Props = {
   children: React.ReactNode;
-  classname?: string;
+  className?: string;
   label?: string;
+  note?: string;
+  onDrop?: DragEventHandler<HTMLDivElement>;
+  onDragOver?: DragEventHandler<HTMLDivElement>;
 };
 
-function Terminal({ children, classname, label }: Props) {
+function Terminal({
+  children,
+  className,
+  label,
+  note,
+  onDrop,
+  onDragOver,
+}: Props) {
   return (
     <div
-      className={`border ${
-        label ? "px-10 pb-10 pt-14" : "p-10"
-      } relative ${classname}`}
+      className={`border relative ${className}`}
+      onDrop={onDrop}
+      onDragOver={onDragOver}
     >
       {label && (
-        <span className="absolute top-2 left-4 text-neutral-400">
-          - {label} -
-        </span>
+        <div className="text-neutral-400 flex justify-between w-full pt-2 px-7 flex-col md:flex-row">
+          <span> - {label} -</span>
+          <span>{note}</span>
+        </div>
       )}
-
-      {children}
+      <div className={`${label ? "pt-8 px-10 pb-10" : "p-10"}`}>{children}</div>
     </div>
   );
 }

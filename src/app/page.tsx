@@ -13,7 +13,14 @@ interface CatType {
   // Add other fields if necessary
 }
 
-const catLocation = ["sofa", "sleeping", "pooping", "eating"];
+const catLocation = [
+  { name: "sofa", note: "Drag and drop cats to any location" },
+  { name: "sleeping" },
+  { name: "pooping" },
+  { name: "eating" },
+  { name: "playing" },
+  { name: "scratching" },
+];
 
 export default function Home() {
   const [catsList, setCatsList] = useState<CatType[]>([]);
@@ -37,11 +44,11 @@ export default function Home() {
           </Terminal>
 
           {catLocation.map((location, index) => (
-            <Terminal key={index} label={location}>
+            <Terminal key={index} label={location.name} note={location.note}>
               <span className="flex flex-wrap gap-3">
                 [
                 {catsList
-                  .filter((cat) => cat.location === location)
+                  .filter((cat) => cat.location === location.name)
                   .map((cat, index) => (
                     <Cat name={cat.name} key={index} />
                   ))}
