@@ -25,19 +25,10 @@ function CatAdd({ setCatsList }: Props) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name: form.name }),
+      body: JSON.stringify(form),
     });
 
-    setCatsList((preState: { name: string }[]) => [
-      ...preState,
-      { name: form.name },
-    ]);
-
-    // if (!res.ok) {
-    //   throw new Error("Failed to create ticket");
-    // }
-    // router.refresh();
-    // router.push("/");
+    setCatsList((preState: { name: string }[]) => [...preState, form]);
   }
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
