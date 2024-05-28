@@ -15,7 +15,7 @@ type Props = {
 
 function Cats({
   children,
-  catData = [{}],
+  catData = [],
   onDrop,
   onDragOver,
   onDragStart,
@@ -24,7 +24,10 @@ function Cats({
   //   const [form, setForm] = useState();
   return (
     <>
-      {catData.map((location, index) => (
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable key={ind} droppableId={`${ind}`}></Droppable>
+      </DragDropContext>
+      {/* {catData.map((location, index) => (
         <Terminal
           id={`terminal-${location.name}-${index}`}
           key={index}
@@ -48,7 +51,7 @@ function Cats({
             ]
           </span>
         </Terminal>
-      ))}
+      ))} */}
     </>
   );
 }
